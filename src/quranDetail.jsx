@@ -120,47 +120,48 @@ export default function QuranDetail() {
         </div>
         <div className="flex justify-between gap-3 mt-10 ">
           <div className="flex flex-col gap-4 bg-gray-800 rounded-xl w-[80%]">
-            {detail?.ayahs?.map((surat, index) => {
-              console.log("auuuu", Object.keys(surat?.audio)[0]);
-              return (
-                <div
-                  key={surat?.number}
-                  className="border-b-2 border-gray-500 px-4 py-3  "
-                >
-                  <div className="flex justify-between py-4">
-                    <div className="font-semibold text-xl">
-                      {surat?.numberInSurah}
+            {detail &&
+              detail?.ayahs?.map((surat, index) => {
+                console.log("auuuu", Object.keys(surat?.audio)[0]);
+                return (
+                  <div
+                    key={surat?.number}
+                    className="border-b-2 border-gray-500 px-4 py-3  "
+                  >
+                    <div className="flex justify-between py-4">
+                      <div className="font-semibold text-xl">
+                        {surat?.numberInSurah}
+                      </div>
+                      <div className="flex flex-col">
+                        <div className="text-right text-2xl">{surat?.text}</div>
+                      </div>
                     </div>
-                    <div className="flex flex-col">
-                      <div className="text-right text-2xl">{surat?.text}</div>
+                    <div className="flex justify-between gap-5 mt-5">
+                      <div className="text-justify text-l text-gray-400">
+                        {arti?.ayahs[index]?.text}
+                      </div>
+                      <button
+                        onClick={() => toggleAudio(surat?.audio)}
+                        // disabled={!isLoggedIn()}
+                        className=""
+                      >
+                        {isLoggedIn() &&
+                        audioStates[surat.audio] &&
+                        !audioStates[surat.audio].paused ? (
+                          <FaPauseCircle />
+                        ) : (
+                          <FaPlay />
+                        )}
+                      </button>
                     </div>
                   </div>
-                  <div className="flex justify-between gap-5 mt-5">
-                    <div className="text-justify text-l text-gray-400">
-                      {arti?.ayahs[index]?.text}
-                    </div>
-                    <button
-                      onClick={() => toggleAudio(surat?.audio)}
-                      // disabled={!isLoggedIn()}
-                      className=""
-                    >
-                      {isLoggedIn() &&
-                      audioStates[surat.audio] &&
-                      !audioStates[surat.audio].paused ? (
-                        <FaPauseCircle />
-                      ) : (
-                        <FaPlay />
-                      )}
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
 
           <div className=" flex flex-col  gap-1  overflow-y-auto w-[20%]  h-screen rounded-2xl ">
             {surah &&
-              surah.map((e) => (
+              surah?.map((e) => (
                 <div
                   className="  py-2 px-2 flex justify-between items-center bg-gray-800 hover:bg-gray-600"
                   key={e?.number}
