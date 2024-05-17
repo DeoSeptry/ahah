@@ -124,6 +124,11 @@ export default function QuranDetail() {
             {detail &&
               detail?.ayahs?.length > 0 &&
               detail.ayahs.map((surat, index) => {
+                const audioUrl = surat?.audio;
+                // Pastikan audioUrl terdefinisi sebelum mengaksesnya
+                if (!audioUrl) {
+                  return null;
+                }
                 console.log("auuuu", Object.keys(surat?.audio)[0]);
                 return (
                   <div
