@@ -147,8 +147,8 @@ export default function QuranDetail() {
                         className=""
                       >
                         {isLoggedIn() &&
-                        audioStates[surat.audio] &&
-                        !audioStates[surat.audio].paused ? (
+                        audioStates[surat?.audio] &&
+                        !audioStates[surat?.audio]?.paused ? (
                           <FaPauseCircle />
                         ) : (
                           <FaPlay />
