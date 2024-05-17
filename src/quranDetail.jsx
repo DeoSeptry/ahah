@@ -122,7 +122,8 @@ export default function QuranDetail() {
         <div className="flex justify-between gap-3 mt-10 ">
           <div className="flex flex-col gap-4 bg-gray-800 rounded-xl w-[80%]">
             {detail &&
-              detail?.ayahs?.map((surat, index) => {
+              detail?.ayahs?.length > 0 &&
+              detail.ayahs.map((surat, index) => {
                 console.log("auuuu", Object.keys(surat?.audio)[0]);
                 return (
                   <div
