@@ -16,13 +16,13 @@ export default function QuranDetail() {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const surah = useSelector((state) => state.data.surah);
-  const id = useSelector((state) => state.data.surahId);
-  const arti = useSelector((state) => state.data.arti);
+  const surah = useSelector((state) => state?.data?.surah);
+  const id = useSelector((state) => state?.data?.surahId);
+  const arti = useSelector((state) => state?.data?.arti);
   console.log("id", id);
   const [audioStates, setAudioStates] = useState({});
 
-  const detail = useSelector((state) => state.data.detail);
+  const detail = useSelector((state) => state?.data?.detail);
 
   console.log("titit", detail);
 
@@ -159,28 +159,29 @@ export default function QuranDetail() {
           </div>
 
           <div className=" flex flex-col  gap-1  overflow-y-auto w-[20%]  h-screen rounded-2xl ">
-            {surah.map((e) => (
-              <div
-                className="  py-2 px-2 flex justify-between items-center bg-gray-800 hover:bg-gray-600"
-                key={e?.number}
-                onClick={() => {
-                  dispatch(setSurahId(e?.number)), dispatch(getTerjemahan());
-                  window.location.reload();
-                }}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="text-xl w-5 text-center font-semibold">
-                    {e?.number}
-                  </div>
-                  <div>
-                    <div className="font-semibold">{e?.englishName}</div>
-                    <div className="text-sm text-gray-400">
-                      {e?.revelationType} . {e?.numberOfAyahs} ayat
+            {surah &&
+              surah.map((e) => (
+                <div
+                  className="  py-2 px-2 flex justify-between items-center bg-gray-800 hover:bg-gray-600"
+                  key={e?.number}
+                  onClick={() => {
+                    dispatch(setSurahId(e?.number)), dispatch(getTerjemahan());
+                    window.location.reload();
+                  }}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="text-xl w-5 text-center font-semibold">
+                      {e?.number}
+                    </div>
+                    <div>
+                      <div className="font-semibold">{e?.englishName}</div>
+                      <div className="text-sm text-gray-400">
+                        {e?.revelationType} . {e?.numberOfAyahs} ayat
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>
