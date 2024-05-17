@@ -32,12 +32,12 @@ export default function QuranDetail() {
   }, []);
 
   const stopAudio = (audioUrl) => {
-    audioStates[audioUrl].pause();
+    audioStates[audioUrl]?.pause();
   };
 
   useEffect(() => {
     return () => {
-      if (Object.keys(audioStates).length !== 0) {
+      if (Object.keys(audioStates)?.length !== 0) {
         stopAudio(Object.keys(audioStates)?.[0]);
       }
     };
@@ -50,15 +50,15 @@ export default function QuranDetail() {
       const audio = new Audio(audioUrl);
       const isPlaying = !!audioStates[audioUrl];
       //kondisi untuk pause jika audio play dan tidak pause
-      if (isPlaying && !audioStates[audioUrl].paused) {
-        audioStates[audioUrl].pause();
+      if (isPlaying && !audioStates[audioUrl]?.paused) {
+        audioStates[audioUrl]?.pause();
       }
       //jika audio tidak beruputar
       else {
         // Stop semua audio
-        Object.values(audioStates).forEach((audio) => audio.pause());
+        Object.values(audioStates)?.forEach((audio) => audio?.pause());
         //play audio
-        audio.play();
+        audio?.play();
         audioStates[audioUrl] = audio;
       }
 
