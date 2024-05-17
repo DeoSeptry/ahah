@@ -45,9 +45,10 @@ export default function QuranDetail() {
 
   const toggleAudio = (audioUrl) => {
     if (isLoggedIn()) {
-      console.log("det", audioStates);
+      console.log("audiostate", audioStates);
 
       const audio = new Audio(audioUrl);
+      console.log("auudii o", audio);
       const isPlaying = !!audioStates[audioUrl];
       //kondisi untuk pause jika audio play dan tidak pause
       if (isPlaying && !audioStates[audioUrl]?.paused) {
