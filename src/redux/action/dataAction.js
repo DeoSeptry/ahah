@@ -59,10 +59,6 @@ export const getTerjemahan = () => async (dispatch, getState) => {
 export const getAyah = () => async (dispatch, getState) => {
   try {
     const nomor = getState().data.nomor;
-
-    if (nomor === null) {
-      nomor = 1;
-    }
     const response = await axios.get(
       `https://api.alquran.cloud/v1/ayah/${nomor}/ar.alafasy`
     );

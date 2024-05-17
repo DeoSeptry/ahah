@@ -6,7 +6,7 @@ const initialState = {
   detail: null,
   bahasa: "",
   arti: [],
-  nomor: null,
+  nomor: "1",
   editAyah: [],
 };
 
